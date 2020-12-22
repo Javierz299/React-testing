@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import CommentBox from './components/CommentBox/CommentBox'
 import CommentList from './components/CommentList/CommentList'
 
