@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import { connect } from 'react-redux'
+import * as ACTIONS from '../../store/actions/actions'
+
 class CommentBox extends Component {
     constructor(props){
         super(props)
@@ -13,8 +16,7 @@ class CommentBox extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        //call an action creator
-        //and save the comment
+        this.props.saveComment(this.state.comment)
 
         this.setState({
             comment: ''
@@ -44,4 +46,10 @@ class CommentBox extends Component {
     }
 }
 
-export default CommentBox
+function mapDispatchToProps(dispatch){
+    return {
+        saveComment: (txt) => dispatch(ACTIONS.save_comment(txt))
+    }
+}
+
+export default connect(null,mapDispatchToProps)(CommentBox)
