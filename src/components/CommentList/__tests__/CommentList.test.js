@@ -15,5 +15,14 @@ beforeEach(() => {
 })
 
 it('creates one item per comment', () => {
-    console.log("item",wrapped.find('li').length)
-})
+    //console.log("item",wrapped.find('li').length)
+    expect(wrapped.find('li').length).toEqual(2)
+});
+
+it('shows the text for each comment',() => {
+   // console.log(wrapped.render().text()); => test1test2
+    // seperate toContain()
+   expect(wrapped.render().text()).toContain('test1');
+   expect(wrapped.render().text()).toContain('test2');
+
+});
