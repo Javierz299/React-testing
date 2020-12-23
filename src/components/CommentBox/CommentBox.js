@@ -6,7 +6,6 @@ import * as ACTIONS from '../../store/actions/actions'
 class CommentBox extends Component {
     constructor(props){
         super(props)
-
         this.state = {
             comment: '',
         };
