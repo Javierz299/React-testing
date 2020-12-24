@@ -1,0 +1,10 @@
+Unit Tests
+# isolated tests, testing individual areas of our code
+# does this piece of our code work the way its suppose too
+##### E.g => Does the commentbox show a button?
+#####     => Does the commentlist produce a list of LI elements?
+#####     => Does the action creator return an object?
+
+Integration Test
+# Tests many individual parts together
+##### E.g => Does the clicking the 'Fetch comments button' 'show a list of Items'

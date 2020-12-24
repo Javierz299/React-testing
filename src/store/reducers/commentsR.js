@@ -13,7 +13,7 @@ const CommentsReducer = (state = intialState, action) => {
                 comments: [...state.comments,action.payload]
             }
         case ACTION_TYPES.FETCH_COMMENTS:
-            console.log('data',action.payload.data)
+            //console.log('data',action.payload.data)
             const comments = action.payload.data.map(comment => comment.name);
             return {
                 ...state,

@@ -6,7 +6,7 @@ it('handles actions of type SAVE_COMMENT', () => {
         type: ACTIONS.SAVE_COMMENT,
         payload: 'new comment'
     };
-
+//                              state   ,    action.type
     const newState = CommentsR({comments: []},action);
     console.log('newState',newState)
 
