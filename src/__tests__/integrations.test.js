@@ -28,8 +28,8 @@ afterEach(() => {
 
 //testing is using a mock browser can't make ajax request
 //within js dom
-//use moxios (axios) tricks api call to work with test
-it('can fetch a list of comments and display item name', () => {
+//use moxios (axios) tricks api call to work with test // invoke done when done
+it('can fetch a list of comments and display item name', (done) => {
         //attempt to render the *entire* app
         const wrapped = mount(
             <Root>
@@ -39,6 +39,27 @@ it('can fetch a list of comments and display item name', () => {
         //find the fetchcomments button and click it
         wrapped.find('.fetch_comments').simulate('click');
 
+        //introduce tiny pause.. if test fails due to delay
+        //tell jest to hold on for setTimeout with done()
+        //other wise jest runs every line with out waiting
+        // setTimeout(() => {
+        //     wrapped.update();
+        //     expect(wrapped.find('li').length).toEqual(4);
+            
+        //     done();
+        //     wrapped.unmount(); //clean up, unmount
+        // }, (500));
+        
+        //instead of setTimeout
+        moxios.wait(() => {
+            wrapped.update();
+
+            expect(wrapped.find('li').length).toEqual(4);
+
+            done();
+            wrapped.unmount(); //clean up, unmount
+        })
+
         //Expect to find list of comments
-        expect(wrapped.find('li').length).toEqual(2);
+        //expect(wrapped.find('li').length).toEqual(2);
 });

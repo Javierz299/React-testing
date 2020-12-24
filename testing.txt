@@ -8,3 +8,4 @@ Unit Tests
 Integration Test
 # Tests many individual parts together
 ##### E.g => Does the clicking the 'Fetch comments button' 'show a list of Items'
+
