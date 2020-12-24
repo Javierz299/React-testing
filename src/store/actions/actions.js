@@ -15,3 +15,17 @@ export const fetch_comments = async () => {
         payload: response
     }
 }
+
+export const sign_in = () => {
+    return {
+        type: ACTION_TYPES.SIGN_IN,
+        payload: true
+    }
+}
+
+export const sign_out = () => {
+    return {
+        type: ACTION_TYPES.SIGN_OUT,
+        payload: false
+    }
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import * as ACTIONS from '../../store/actions/actions'
@@ -9,6 +10,21 @@ class CommentBox extends Component {
         this.state = {
             comment: '',
         };
+
+    }
+
+    componentDidMount(){
+        console.log('did mount')
+        this.unAuthorized()
+    }
+
+    unAuthorized(){
+        const logged_in = this.props.signed_in;
+
+        if(!logged_in){
+            console.log("nav away")
+           this.props.history.push('/')
+        }
 
     }
 
@@ -52,6 +68,12 @@ class CommentBox extends Component {
     }
 }
 
+function mapStateToProps(state){
+    return {
+        signed_in: state.authReducer.signed_in,
+    }
+}
+
 function mapDispatchToProps(dispatch){
     return {
         saveComment: (txt) => dispatch(ACTIONS.save_comment(txt)),
@@ -59,4 +81,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect(null,mapDispatchToProps)(CommentBox)
+export default connect(mapStateToProps,mapDispatchToProps)(CommentBox)

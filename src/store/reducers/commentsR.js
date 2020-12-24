@@ -22,6 +22,6 @@ const CommentsReducer = (state = intialState, action) => {
         default:
             return state
     }
-}
+};
 
 export default CommentsReducer;
