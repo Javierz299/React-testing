@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+
 //                    CommentBox
 const requireAuth = (ChildComponent) => {
     class ComposedComponent extends Component {
@@ -46,3 +47,9 @@ export default requireAuth;
 // imagine we are in App.js
 // import CommentBox from '../
 // we are injecting another component inside the hiearchy
+
+//HOC steps
+//write the steps you want to reuse into a component
+//create a HOC and add the HOC scaffold
+//move the reusable logic into the HOC
+//pass props/config/behavior through to child component
