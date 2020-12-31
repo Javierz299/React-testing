@@ -1,0 +1,21 @@
+Asynce Middleware
+                                          __________________________________
+                        ACTION           |                                  |
+                          |              v                                  |
+                Does the action cantain                                     ^
+                    a promise?                                              |
+                    /             \                                         ^
+                  no              yes                                       |
+                  |                |                                        ^
+        i dont care about       Cool,lets wait for it to resolve            |
+        it, send it to the              (get a response)                    |
+        next Middleware.                     |                              ^
+              |                ...Resolved!  Here's the data.               |
+              |                make a new action and send it                |
+              |                through all the Middlewares again, __________|
+              |                BUT with the DATA as the PAYLOAD,
+              |                NOT the promise.
+              |
+              |
+______________v______________________________________________________
+             - - - -REDUCERS- - - -
