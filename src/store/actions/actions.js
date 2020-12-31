@@ -9,8 +9,10 @@ export const save_comment = (comment) => {
 }
 //In plain Redux, you can only dispatch objects. 
 //In order to dispatch async functions, you would need to use a middleware
-export const fetch_comments = async () => {
-    const response = await axios.get('http://jsonplaceholder.typicode.com/comments');
+                        //async
+export const fetch_comments = () => { // dont need async await with custom middleware of async
+                //await
+    const response = axios.get('http://jsonplaceholder.typicode.com/comments');
     console.log('response',response)
     return {
         type: ACTION_TYPES.FETCH_COMMENTS,

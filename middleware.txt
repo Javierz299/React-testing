@@ -1,3 +1,9 @@
+redux-promise lets you pass promises directly to dispatch() , or 
+put promises inside of an action object. 
+redux-thunk lets you pass functions directly to dispatch() , and 
+makes dispatch() return whatever the thunk function returns (which could be a value, could be a promise, or something else).
+
+
 Asynce Middleware
                                           __________________________________
                         ACTION           |                                  |
