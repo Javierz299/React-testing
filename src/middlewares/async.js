@@ -23,16 +23,20 @@ const async = ({ dispatch }) => { // export default ({ dispatch }) => next => ac
             //we want to wait for the promise to resolve
             //(get its data!!!) and then create a new action
             // with that data and dispatch it
-            console.log('action',action.payload.then(r => console.log(r)))
+            //console.log('action',action.payload.then(r => console.log(r)))
 
             // dont need async await in action "fetch comments" with this
             // custom async middleware
             action.payload.then((response) => {
                 const newAction = { ...action, payload: response };// overwrite the payload with the response
-                //console.log('action',{...action})
+                // spread the properties returned from action and then ^ update/overwrite payload
+                //console.log('action',action)
+                //console.log('action w spread', {...action, load: 'response'})
                 //console.log('newAction',newAction)
                 dispatch(newAction); // kicks off the entire process again of middlewares
             })
+            //{...action, payload: respone} => type: "..." , payload: {data: ...}
+            // {...action} => payload: <Pendng />
             
         }
     }
