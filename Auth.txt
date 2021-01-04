@@ -1,0 +1,17 @@
+Cookies
+____________
+Automatically included on all requests
+Unique to each domain
+Cannot be sent to different domains
+
+                     cookies are included on all http requests by default => cookie: {userId: 1234}
+Request => Headers => cookie: {}
+
+-----------------------------------------------------------------------------------------------------
+
+Token
+_____________
+Have to manually wire up
+Can be sent to any domain
+
+Request => Headers => authorization: a8adfa7f
