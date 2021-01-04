@@ -1,3 +1,8 @@
+JSON SCHEMA TOOL - GENARATOR
+// 
+https://jsonschema.net/login
+
+
 redux-promise lets you pass promises directly to dispatch() , or 
 put promises inside of an action object. 
 redux-thunk lets you pass functions directly to dispatch() , and 
@@ -25,3 +30,45 @@ Asynce Middleware
               |
 ______________v______________________________________________________
              - - - -REDUCERS- - - -
+
+
+__________________________________________________
+State Validation Middleware
+
+                        Redux State
+                    -----------------
+                    comments: ["comment 1", "comment 2]
+                    auth: true
+                            |
+                            |
+                            v 
+                        State Schema
+                    -------------------
+                    comments:  Array<String> // !{}, ![], 
+                    auth:  Boolean 
+
+
+                    ACTION
+                _____________ 
+            I dont do anything right
+            away. Send the action to
+            the NEXT middleware.
+            |                      |
+            |                      v
+            |                Is that all done? OK, then
+            |                get our new, updated redux state
+            |                           |  
+            |                           v     
+            |                      Validate the structure and 
+            |                       type of values in state.
+            |                           |               |
+            |                           v               v
+            |                         Valid         Invalid
+            |                           |               |
+            |                           v               v 
+            |                        Do nothing     Log Warning
+            |______________________________________________________
+  __________v__________________
+  - - - -REDUCERS- - - -
+            
+
