@@ -1,3 +1,8 @@
+jwt.io
+
+// incoming request => passport => route handler
+passport.js => Authentication library usually used for cookie based authentication, has a lot of helpers for cookie authentication
+
 Cookies
 ____________
 Automatically included on all requests
@@ -15,3 +20,32 @@ Have to manually wire up
 Can be sent to any domain
 
 Request => Headers => authorization: a8adfa7f
+
+
+userId + our secret string = JSON web Token
+JSON web token + our secret string = userId
+
+
+
+passport => strategies
+------------------------
+signing up => verify email is not in use => token
+
+signing in => verify email/password => token => LocalStrategy
+
+Auth'd Request => verify token => resource access => JwtStrategy
+
+--------------------------------------------------------------------
+
+
+Saving a password
+--------------------
+using bcrypt, we created a 'salt' and then plain password gets added to the salt
+and we save the salt and hashed password in our db
+
+comparing passwords (sign-in)
+------------------------------
+we take the 'salt' (encryption key) to encrypt submitted password which will give
+us a hashpassword and then we compare that with the one saved in the db
+
+
