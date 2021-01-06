@@ -10,7 +10,7 @@ const async = ({ dispatch }) => { // export default ({ dispatch }) => next => ac
 // dispatch takes an action and then calls the middlewares
     return ( next ) => {
         return ( action ) => {
-            console.log('action',action)
+            //console.log('action',action)
             //check to see if the action has a promise on its payload property
             //if it does, then wait for it to resolve
             //if it doesnt, then send the action on to the next middleware

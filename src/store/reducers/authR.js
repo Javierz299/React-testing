@@ -1,7 +1,9 @@
 import * as ACTION_TYPES from '../actions/action_type'
 
 const initialState = {
+    authenicated: '',
     signed_in: false,
+    errorMessage: ''
 }
 
 const AuthReducer = (state = initialState, action) => {
