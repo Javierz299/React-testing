@@ -41,8 +41,15 @@ export const sign_out = () => {
 export const sign_up = (formProps) => {
     //REDUX-THUNK allows for total control over the 
     // dispatch process
-    return (dispatch) => {
+    return async (dispatch) => {
 //axios.post('http://localhost:5000/api/signup',{email, password });
-        axios.post('http://localhost:5000/api/signup',formProps)
+        try{
+            const response = await axios.post('http://localhost:5000/api/signup',formProps)
+            dispatch({ type: ACTION_TYPES.AUTH_USER, payload: response.data.token })
+
+        } catch (e) { 
+            dispatch({ type: ACTION_TYPES.AUTH_ERROR, payload: "Email in use" })
+        }
+
     };
 };
