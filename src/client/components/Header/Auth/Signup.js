@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
@@ -12,7 +13,9 @@ class Signup extends Component{
 
     onSubmit = (formProps) => {
         //console.log(formProps)
-        this.props.sign_up(formProps)
+        this.props.sign_up(formProps, () => {
+            this.props.history.push('/feature')
+        })
     }
 
     render(){

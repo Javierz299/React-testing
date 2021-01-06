@@ -38,7 +38,7 @@ export const sign_out = () => {
 // action creator => action => middleware => reducers
 //                  __________
 //                      {email, password}
-export const sign_up = (formProps) => {
+export const sign_up = (formProps, callback) => {
     //REDUX-THUNK allows for total control over the 
     // dispatch process
     return async (dispatch) => {
@@ -46,7 +46,7 @@ export const sign_up = (formProps) => {
         try{
             const response = await axios.post('http://localhost:5000/api/signup',formProps)
             dispatch({ type: ACTION_TYPES.AUTH_USER, payload: response.data.token })
-
+            callback();
         } catch (e) { 
             dispatch({ type: ACTION_TYPES.AUTH_ERROR, payload: "Email in use" })
         }
