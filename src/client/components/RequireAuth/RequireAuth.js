@@ -11,9 +11,9 @@ const requireAuth = (ChildComponent) => {
         }
     
         Authorized(){
-            const logged_in = this.props.signed_in;
+            const logged_in = this.props.auth;
             if(!logged_in){
-                console.log("nav away")
+                console.log("not auth'd nav away")
                this.props.history.push('/')
             }
         }
@@ -24,8 +24,9 @@ const requireAuth = (ChildComponent) => {
     }
 
     function mapStateToProps(state){
-    return {
-        signed_in: state.authReducer.signed_in,
+        //console.log(state.authReducer.authenicated) 
+    return {                    
+        auth: state.authReducer.authenticated
     };
 }
 

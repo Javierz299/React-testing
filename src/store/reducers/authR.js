@@ -1,10 +1,11 @@
 import * as ACTION_TYPES from '../actions/action_type'
 
 const initialState = {
-    authenicated: '',
+    authenticated: '',
     signed_in: false,
-    errorMessage: ''
-}
+    errorMessage: '',
+}    //auth: { authenicated: localStorage.getItem('token') }
+
 
 const AuthReducer = (state = initialState, action) => {
     switch(action.type){
@@ -19,9 +20,10 @@ const AuthReducer = (state = initialState, action) => {
                 signed_in: false
             }
         case ACTION_TYPES.AUTH_USER:
+            console.log('DISPATCHED',action.payload)
             return {
                 ...state,
-                authenicated: action.payload
+                authenticated: action.payload
             }
         case ACTION_TYPES.AUTH_ERROR:
             return {

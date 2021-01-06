@@ -12,7 +12,7 @@ import * as ACTIONS from '../../../../store/actions/actions'
 class Signup extends Component{
 
     onSubmit = (formProps) => {
-        //console.log(formProps)
+        console.log('formprops',formProps)
         this.props.sign_up(formProps, () => {
             this.props.history.push('/feature')
         })
@@ -48,7 +48,7 @@ class Signup extends Component{
 }
 
 function mapStateToProps(state){
-   console.log('state',state.authReducer.errorMessage)
+   console.log('state auth',state.authReducer.authenticated)
     return{
         errorMessage: state.authReducer.errorMessage
     }
