@@ -27,12 +27,6 @@ export const sign_in = () => {
     }
 };
 
-export const sign_out = () => {
-    return {
-        type: ACTION_TYPES.SIGN_OUT,
-        payload: false
-    }
-};
 //     facilitated by the 'dispatch' function
 //                   _________
 // action creator => action => middleware => reducers
@@ -45,7 +39,7 @@ export const sign_up = (formProps, callback) => {
 //axios.post('http://localhost:5000/api/signup',{email, password });
         try{
             const response = await axios.post('http://localhost:5000/api/signup',formProps)
-            console.log("RESPONSE",response.data.token)
+            //console.log("RESPONSE",response.data.token)
             dispatch({ type: ACTION_TYPES.AUTH_USER, payload: response.data.token })
             localStorage.setItem('token', response.data.token)
             callback();
@@ -55,3 +49,12 @@ export const sign_up = (formProps, callback) => {
 
     };
 };
+
+export const sign_out = () => {
+    localStorage.removeItem('token')
+    console.log('action creator signout')
+    return {
+        type: ACTION_TYPES.AUTH_USER,
+        payload: ''
+    }
+}
