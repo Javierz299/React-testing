@@ -47,7 +47,7 @@ export const sign_up = (formProps, callback) => {
             const response = await axios.post('http://localhost:5000/api/signup',formProps)
             console.log("RESPONSE",response.data.token)
             dispatch({ type: ACTION_TYPES.AUTH_USER, payload: response.data.token })
-            //localStorage.setItem('token', response.data.token)
+            localStorage.setItem('token', response.data.token)
             callback();
         } catch (e) { 
             dispatch({ type: ACTION_TYPES.AUTH_ERROR, payload: "Email in use" })

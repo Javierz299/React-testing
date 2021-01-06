@@ -48,7 +48,7 @@ class Signup extends Component{
 }
 
 function mapStateToProps(state){
-   console.log('state auth',state.authReducer.authenticated)
+   //console.log('state auth',state.authReducer.authenticated)
     return{
         errorMessage: state.authReducer.errorMessage
     }
