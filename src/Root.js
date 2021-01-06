@@ -15,7 +15,7 @@ import reduxThunk from 'redux-thunk'
 //In plain Redux, you can only dispatch objects. 
 //In order to dispatch async functions, you would need to use a middleware
 //                                   applyMiddleware(async,stateValidator)
-let store = createStore(rootReducer, applyMiddleware(async,reduxThunk))
+let store = createStore(rootReducer, applyMiddleware(reduxThunk))
 /// can have a stack of middlewares; ACTION => MW1 => MW2 => MW3 => REDUCER
 //// M.wares inspect the action and can either deal with it or 
 //  pass on to the next() Middleware

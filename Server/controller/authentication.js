@@ -19,7 +19,7 @@ exports.signin = (req, res, next) => {
 
 
 exports.signUp = (req,res,next) => {
-    console.log('req',req.body)
+    console.log('REQ FROM CLIENT',req.body)
     const { email, password } = req.body;
 
     if(!email || !password){
@@ -29,19 +29,22 @@ exports.signUp = (req,res,next) => {
 
     //          email: email
     User.findOne({ email }, (err,existingUser) => {
+    console.log('FIND METHOD',existingUser)
         if(err) return next(err) ;
         //                           unprocessable
-        if(existingUser) return res.status(422)
-            .send(({ error: 'Email is in use' }));
-
+        if(existingUser) {
+            console.log("STATUS 422")
+            return res.status(422).send({ error: 'Email is in use' });
+        }
         const user = new User({
             email,
             password
         });
-
+        
+        console.log("BEFORE SAVE",user)
     user.save((err) => {// user.save() takes x amount of time to save
         if(err) return next(err);
-
+        console.log("SAVE",user)
         res.json({ token: tokenForUser(user) })
         });
 

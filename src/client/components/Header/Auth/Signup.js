@@ -43,5 +43,8 @@ class Signup extends Component{
 
 
 
-export default compose(connect(null,ACTIONS),reduxForm({form: 'signup'}))(Signup)
+export default compose(
+    connect(null,ACTIONS),
+    reduxForm({form: 'sign_up'}))
+(Signup)
 
