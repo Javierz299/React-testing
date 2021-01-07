@@ -20,12 +20,12 @@ export const fetch_comments = () => { // dont need async await with custom middl
     }
 };
 
-export const sign_in = () => {
-    return {
-        type: ACTION_TYPES.SIGN_IN,
-        payload: true
-    }
-};
+// export const sign_in = () => {
+//     return {
+//         type: ACTION_TYPES.SIGN_IN,
+//         payload: true
+//     }
+// };
 
 //     facilitated by the 'dispatch' function
 //                   _________
@@ -58,3 +58,21 @@ export const sign_out = () => {
         payload: ''
     }
 }
+
+export const sign_in = (formProps, callback) => {
+    //REDUX-THUNK allows for total control over the 
+    // dispatch process
+    return async (dispatch) => {
+//axios.post('http://localhost:5000/api/signin',{email, password });
+        try{
+            const response = await axios.post('http://localhost:5000/api/signin',formProps)
+            //console.log("RESPONSE",response.data.token)
+            dispatch({ type: ACTION_TYPES.AUTH_USER, payload: response.data.token })
+            localStorage.setItem('token', response.data.token)
+            callback();
+        } catch (e) { 
+            dispatch({ type: ACTION_TYPES.AUTH_ERROR, payload: "Invalid login" })
+        }
+
+    };
+};
